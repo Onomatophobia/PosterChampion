@@ -1,0 +1,144 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    transition: background-color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Header Styling (no changes) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #000;
+}
+.logo-title { font-size: 1.8em; font-weight: bold; flex-grow: 0; flex-shrink: 0; margin-right: 20px; white-space: nowrap; letter-spacing: 0.5px; }
+.search-container { position: relative; flex-grow: 1; margin: 0 40px; max-width: 500px; display: flex; align-items: center; }
+.search-icon { color: #aaa; margin-right: 8px; font-weight: bold; }
+.search-bar { padding: 8px 12px 8px 5px; border: none; background-color: transparent; color: #fff; font-size: 1em; width: 100%; outline: none; border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+.search-bar:focus { border-bottom: 1px solid #555; }
+.search-bar::placeholder { color: #aaa; opacity: 1; }
+
+
+/* Main Content Layout */
+.container {
+    display: flex;
+    padding-top: 20px; /* Space below header */
+    position: relative; /* Keep for absolute positioning context */
+}
+
+/* Sidebar Styling (no changes to the sidebar itself) */
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 0 0 0 20px;
+    height: calc(100vh - 80px); /* Adjust based on header height */
+    position: sticky; /* Keep sidebar sticky */
+    top: 75px; /* Position below the header */
+    transition: width 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+    z-index: 900;
+    background-color: #000;
+    /* overflow: hidden; /* Ensure content doesn't spill when collapsing */
+}
+.sidebar-content { width: 100%; overflow-y: auto; overflow-x: hidden; padding-right: 15px; opacity: 1; transition: opacity 0.2s ease; }
+.sidebar h2 { border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.2em; font-weight: normal; letter-spacing: 0.5px; }
+.category-list { list-style: none; padding: 0; margin-bottom: 30px; }
+.category-list li { padding: 10px 5px; cursor: pointer; transition: color 0.3s ease, background-color 0.3s ease; font-size: 1em; border-radius: 4px; margin-bottom: 2px; }
+.category-list li:hover { color: #fff; background-color: #222; }
+.category-list li.active { color: #fff; background-color: #333; font-weight: bold; }
+.about-link { display: block; margin-top: auto; padding-top: 20px; padding-bottom: 20px; font-size: 0.9em; color: #aaa; text-decoration: none; border-top: 1px solid #444; }
+.about-link:hover { color: #fff; }
+
+
+/* Sidebar Toggle Button - UPDATED Positioning */
+.sidebar-toggle {
+    position: fixed; /* Use fixed to position relative to viewport */
+    left: 220px; /* Start position just outside the expanded sidebar (220px width + ~0px padding offset) */
+    /* Adjust top based on header height + desired spacing */
+    top: 85px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 950; /* Ensure it's above sidebar content but below header */
+    /* Transition left position as well */
+    transition: background-color 0.3s ease, transform 0.3s ease, left 0.3s ease;
+    transform: rotate(0deg); /* Start pointing left */
+}
+
+.sidebar-toggle:hover {
+    background-color: #555;
+}
+
+/* Collapsed State Styles */
+body.sidebar-collapsed .sidebar {
+    width: 0;
+    padding: 0;
+    transform: translateX(-20px); /* Optional: slight move out */
+    overflow: hidden; /* Hide content */
+}
+
+body.sidebar-collapsed .sidebar-content {
+   opacity: 0;
+   pointer-events: none;
+}
+
+/* Adjust toggle button position when collapsed */
+body.sidebar-collapsed .sidebar-toggle {
+     left: 10px; /* Move button near the left edge */
+     transform: rotate(180deg); /* Flip arrow */
+}
+
+
+/* Poster Grid Styling */
+.poster-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 0 30px 30px 30px;
+    transition: margin-left 0.3s ease;
+    /* Margin-left will be adjusted by JS OR rely on flex-grow */
+    margin-left: 20px; /* Initial space next to sidebar + button */
+}
+
+/* Adjust grid margin when sidebar is collapsed */
+body.sidebar-collapsed .poster-grid {
+    margin-left: 50px; /* Space for the collapsed toggle button */
+}
+
+/* Poster Item Styling (no changes) */
+.poster-item { display: block; text-decoration: none; overflow: hidden; position: relative; border-radius: 5px; background-color: #111; transition: transform 0.3s ease, opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease; opacity: 1; max-height: 600px; margin: 0; padding: 0; }
+.poster-item img { display: block; width: 100%; height: auto; transition: transform 0.3s ease; }
+.poster-item:hover img { transform: scale(1.05); }
+.poster-item.hidden { opacity: 0; transform: scale(0.9); max-height: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; pointer-events: none; border: none; }
+
+/* About Page Specific Styling (no changes) */
+.about-page-container { max-width: 800px; margin: 40px auto; padding: 30px; border: 1px solid #333; border-radius: 8px; }
+.about-page-container h1, .about-page-container h2 { margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 5px; }
+.about-page-container section { margin-bottom: 25px; }
+.about-page-container p { margin-bottom: 10px; }
+.about-page-container a { color: #8ab4f8; text-decoration: none; }
+.about-page-container a:hover { text-decoration: underline; }
+.back-link { display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #333; color: #fff; border-radius: 4px; text-decoration: none; transition: background-color 0.3s ease;}
+.back-link:hover { background-color: #555; }

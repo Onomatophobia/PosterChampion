@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster Champion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo-title">POSTER CHAMPION</h1>
+        <div class="search-container">
+            <span class="search-icon">Q</span>
+            <input type="search" id="searchBar" class="search-bar" placeholder="Search posters...">
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <h2>Categories</h2>
+                <ul class="category-list">
+                    <li data-category="all" class="active">All</li>
+                    <li data-category="movies">Movies</li>
+                    <li data-category="music">Music</li>
+                    <li data-category="art">Art</li>
+                    <li data-category="gaming">Gaming</li>
+                    <li data-category="anime">Anime</li>
+                    <li data-category="nature">Nature</li>
+                    <li data-category="abstract">Abstract</li>
+                    <li data-category="minimalist">Minimalist</li>
+                </ul>
+                <a href="about.html" class="about-link">About Poster Champion</a>
+            </div>
+             </aside>
+
+        <button id="sidebarToggle" class="sidebar-toggle" aria-label="Toggle Sidebar" aria-expanded="true">
+            &lt;
+        </button>
+
+        <main class="poster-grid" id="posterGrid">
+            </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
