@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const postersPerLoad = 15;
 
     const postersData = [
-         { id: 1, imageUrl: 'images/poster1.jpg', affiliateUrl: 'https://example.com/affiliate-link-1', category: 'movies', keywords: ['sci-fi', 'adventure', 'space', 'classic film'] },
+         { id: 1, imageUrl: 'images/blackwidow1.png', affiliateUrl: 'https://amzn.to/4jlDFJf', category: 'Movies', keywords: ['Avengers', 'Marvel', 'Thanos', 'Captain America'] },
          { id: 2, imageUrl: 'images/poster2.jpg', affiliateUrl: 'https://example.com/affiliate-link-2', category: 'music', keywords: ['rock', 'band', 'concert', 'album art', 'vintage'] },
          { id: 3, imageUrl: 'images/poster3.jpg', affiliateUrl: 'https://example.com/affiliate-link-3', category: 'art', keywords: ['abstract', 'modern art', 'gallery', 'colorful'] },
          { id: 4, imageUrl: 'images/poster4.jpg', affiliateUrl: 'https://example.com/affiliate-link-4', category: 'movies', keywords: ['horror', 'thriller', 'cult classic', 'film'] },
